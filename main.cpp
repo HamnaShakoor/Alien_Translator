@@ -4,8 +4,8 @@
 using namespace std;
 const char english_lower[26]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 const char english_upper[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-const char alien_lower[26]={'a','b','o','d','e','f','g','r','i','j','k','l','m','n','u','p','q','h','s','t','o','v','w','x','y','z'};
-const char alien_upper[26]={'A','B','O','D','E','F','G','R','I','J','K','L','M','N','U','P','Q','H','S','T','O','V','W','X','Y','Z'};
+const char alien_lower[26]={'k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a','b','c','d','e','f','g','h','i','j'};
+const char alien_upper[26]={'K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J'};
 int main()
 {
     string text;
