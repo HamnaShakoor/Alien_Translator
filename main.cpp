@@ -10,11 +10,14 @@ const char alien_lower[26]={'k','l','m','n','o','p','q','r','s','t','u','v','w',
 const char alien_upper[26]={'K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J'};
 int main()
 {
-  sf::RenderWindow window(sf::VideoMode(1000, 700), "StellaCode - Earth to Alien");
+  sf::RenderWindow window(sf::VideoMode(1100, 800), "StellaCode - Earth to Alien");
   enum State { MENU, TRANSLATE, EXIT_SCREEN };
   State currentState = MENU;
   sf::Font font;
-  font.loadFromFile("stylish_font.ttf");
+  if (!font.loadFromFile("Tangerine-Regular.ttf")) 
+  {
+    cout << "Error: Font file nahi mili!" << endl;
+  }
   sf::Texture backgroundPic;
   if (!backgroundPic.loadFromFile("alienBackground.png")) 
   {
@@ -50,33 +53,50 @@ int main()
               }
             }
       }
-      window.clear(sf::Color(225, 205, 255));
+      window.clear();
+      window.draw(backgroundSprite);
         if (currentState == MENU)
         {
             sf::Text mainTitle;
             mainTitle.setFont(font);                       
             mainTitle.setString("StellaCode");             
-            mainTitle.setCharacterSize(65);                
+            mainTitle.setCharacterSize(90);                
             mainTitle.setFillColor(sf::Color(45, 30, 95)); 
             mainTitle.setStyle(sf::Text::Bold);            
-            mainTitle.setPosition(360, 150);              
+            mainTitle.setPosition(400, 150);              
             window.draw(mainTitle);                        
 
             sf::Text subTitle;
             subTitle.setFont(font);
             subTitle.setString("Earth to Alien Language Translator");
-            subTitle.setCharacterSize(30);
+            subTitle.setCharacterSize(50);
             subTitle.setFillColor(sf::Color(75, 60, 130)); 
-            subTitle.setPosition(260, 240);             
+            subTitle.setStyle(sf::Text::Bold);
+            subTitle.setPosition(300, 280);             
             window.draw(subTitle);
 
-            peekingSprite.setPosition(0, 0);             
-            window.draw(peekingSprite);              
+            sf::RectangleShape startButton(sf::Vector2f(240.f, 60.f));
+            startButton.setPosition(400, 420);
+            startButton.setFillColor(sf::Color(75, 60, 130));
+            startButton.setOutlineThickness(3);
+            startButton.setOutlineColor(sf::Color::White);
+            window.draw(startButton);
 
-            peekingSprite.setPosition(800, 0);             
-            window.draw(peekingSprite);
+            sf::Text buttonText;
+            buttonText.setFont(font);
+            buttonText.setString("Start Game");
+            buttonText.setCharacterSize(36);
+            buttonText.setFillColor(sf::Color::White);
+            buttonText.setStyle(sf::Text::Bold);
+            buttonText.setPosition(450, 430);
+            window.draw(buttonText);
+        }
+        else if (currentState == TRANSLATE)
+        {
+            // 👉 Agle step mein hum yahan translation screen draw karenge!
         }
         window.display();
+
     }
   char choice;
   do
