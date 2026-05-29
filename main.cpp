@@ -1,50 +1,57 @@
-#include <SFML/Graphics.hpp>
 #include<iostream>
-#include <map>
-#include <string>
-#include <vector>
+#include<fstream>
+#include<string>
 using namespace std;
-int main() {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "The Translator Quest");
-    
-    std::vector<std::string> alienDialogue = {"Zorp", "Gleep", "Bork"};
-    std::map<std::string, std::string> dictionary = {
-        {"Zorp", "Hello"}, {"Gleep", "Danger"}, {"Bork", "Food"}
-    };
-    
-    bool hasTranslationChip = false;
-
-    sf::Font font;
-    // Make sure arial.ttf is in your folder!
-    if (!font.loadFromFile("arial.ttf")) {
-        return -1; 
-    }
-
-    sf::Text displayBoard;
-    displayBoard.setFont(font);
-    displayBoard.setCharacterSize(30);
-    displayBoard.setFillColor(sf::Color::Green);
-    displayBoard.setPosition(50, 100);
-
-    while (window.isOpen()) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) window.close();
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) {
-                hasTranslationChip = true;
+const char english_lower[26]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+const char english_upper[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+const char alien_lower[26]={'k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a','b','c','d','e','f','g','h','i','j'};
+const char alien_upper[26]={'K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J'};
+int main()
+{
+    string text;
+    while(true)
+    {
+      cout<<"Please enter the your word or string in Alien Language: ";
+      getline(cin, text);
+      cout<<endl;
+      bool correctInput=true;
+      if(text.length()==0)
+      {
+        cout<<"You entered nothing. Enter Again: ";
+        continue;
+      }
+      for (int i = 0; i < text.length(); i++)
+      {
+         char c=text[i];
+         if(c==' ')
+         {
+           continue;
+         }
+         bool found = false;
+          // alien lower check
+         for(int j = 0; j < 26; j++)
+         {
+            if(c == alien_lower[j] || c == alien_upper[j])
+            {
+                found = true;
+                break;
             }
         }
-
-        std::string fullSentence = "";
-        for (const std::string& word : alienDialogue) {
-            fullSentence += (hasTranslationChip ? dictionary[word] : word) + " ";
+        if(!found)
+        {
+            correctInput = false;
+            break;
         }
-
-        displayBoard.setString("Alien says: " + fullSentence + "\n\n(Press Space to translate!)");
-
-        window.clear();
-        window.draw(displayBoard);
-        window.display();
+     }
+     if(correctInput==true)
+     {
+        break;
+     }
+     else
+     {
+        cout<<"Invalid input. Try Agian.";
+     }
     }
-    return 0;
+    
+    cout<<"Valid Input";
 }
