@@ -8,6 +8,10 @@ const char alien_lower[26]={'k','l','m','n','o','p','q','r','s','t','u','v','w',
 const char alien_upper[26]={'K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J'};
 int main()
 {
+    char choice;
+    do
+    {
+    
     string text;
     while(true)
     {
@@ -89,4 +93,22 @@ int main()
       }
       cout<<translation;
       cout<<endl<<endl;
-}
+
+    
+      cout << "\n\nDo you want to continue? (Y/N): ";
+      cin >> choice;
+
+      if(choice == 'N' || choice == 'n')
+       {
+
+         break;
+       }
+
+      cin.ignore();
+
+      } 
+       while(choice == 'Y' || choice == 'y');
+
+        cout << "\nProgram Ended.";
+        return 0;
+        }
