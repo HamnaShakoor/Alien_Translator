@@ -93,7 +93,7 @@ int main()
         }
         else if (currentState == TRANSLATE)
         {
-            // 👉 Agle step mein hum yahan translation screen draw karenge!
+            
         }
         window.display();
 
