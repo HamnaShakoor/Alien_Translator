@@ -15,7 +15,7 @@
                 "-lsfml-graphics",
                 "-lsfml-window",
                 "-lsfml-system",
-                "-lsfml-audio",   // 🌟 Yahan humne audio library link kar di hai
+                "-lsfml-audio",   
                 "-mconsole"
             ],
             "options": {
